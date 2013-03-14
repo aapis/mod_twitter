@@ -18,7 +18,7 @@ $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 		</div>
 	<?php endif; ?>
 	<ul class="twitter-feed <?php echo $moduleclass_sfx; ?>">
-		<?php if(count($list)): ?>
+		<?php if(count($list) > 0): ?>
 			<?php foreach ($list as $item) : ?>
 				<?php if(isset($item->Status) && $item->Status == 'Error'): ?>
 					<li>
