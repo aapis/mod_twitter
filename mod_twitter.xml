@@ -5,14 +5,14 @@
 	client="site"
 	method="upgrade">
 	<name>mod_twitter</name>
-	<author>Chinook Multimedia Inc</author>
+	<author>Ryan Priebe</author>
 	<creationDate>January 2013</creationDate>
-	<copyright>Copyright (C) 2013 Chinook Multimedia Inc</copyright>
-	<license>All rights reserved</license>
-	<authorEmail>r.priebe@chinookmultimedia.com</authorEmail>
-	<authorUrl>www.chinookmultimedia.com</authorUrl>
+	<copyright>Nope</copyright>
+	<license>WTFPL</license>
+	<authorEmail>rpriebe@me.com</authorEmail>
+	<authorUrl>github.com/aapis/mod_twitter</authorUrl>
 	<version>2.5.0</version>
-	<description>Latest news module</description>
+	<description>Display a list of tweets from your Twitter account.</description>
 	<files>
 		<filename module="mod_twitter">mod_twitter.php</filename>
 		<folder>tmpl</folder>
