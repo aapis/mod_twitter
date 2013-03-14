@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+	type="module"
+	version="2.5"
+	client="site"
+	method="upgrade">
+	<name>mod_twitter</name>
+	<author>Chinook Multimedia Inc</author>
+	<creationDate>January 2013</creationDate>
+	<copyright>Copyright (C) 2013 Chinook Multimedia Inc</copyright>
+	<license>All rights reserved</license>
+	<authorEmail>r.priebe@chinookmultimedia.com</authorEmail>
+	<authorUrl>www.chinookmultimedia.com</authorUrl>
+	<version>2.5.0</version>
+	<description>Latest news module</description>
+	<files>
+		<filename module="mod_twitter">mod_twitter.php</filename>
+		<folder>tmpl</folder>
+		<filename>helper.php</filename>
+		<filename>index.html</filename>
+		<filename>mod_twitter.xml</filename>
+	</files>
+	<help key="Module: Twitter" />
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+			
+				<field
+					name="count"
+					type="integer"
+					default="5"
+					first="1"
+					last="10"
+					step="1"
+					label="Count"
+					description="Number of tweets to display" />
+
+				<field
+					name="screen_name"
+					type="text"
+					default="twitter"
+					label="Screen Name"
+					description="The Twitter account whose tweets you would like to display." />
+			</fieldset>
+
+			<fieldset
+				name="advanced">
+
+				<field
+					name="layout"
+					type="modulelayout"
+					label="JFIELD_ALT_LAYOUT_LABEL"
+					description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+
+				<field
+					name="moduleclass_sfx"
+					type="text"
+					label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+					description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+
+				<field
+					name="cache"
+					type="list"
+					default="1"
+					label="COM_MODULES_FIELD_CACHING_LABEL"
+					description="COM_MODULES_FIELD_CACHING_DESC">
+					<option
+						value="1">JGLOBAL_USE_GLOBAL</option>
+					<option
+						value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+				</field>
+
+				<field
+					name="cache_time"
+					type="text"
+					default="900"
+					label="COM_MODULES_FIELD_CACHE_TIME_LABEL"
+					description="COM_MODULES_FIELD_CACHE_TIME_DESC" />
+				<field
+					name="cachemode"
+					type="hidden"
+					default="static">
+					<option
+						value="static"></option>
+				</field>
+			</fieldset>
+		</fields>
+	</config>
+</extension>
