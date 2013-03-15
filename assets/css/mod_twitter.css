@@ -1,0 +1,8 @@
+/**
+ * @subpackage	mod_twitter
+ * @license		WTFPL
+ */
+
+.mod_twitter li {
+	list-style: none;
+}

@@ -41,6 +41,44 @@
 					default="twitter"
 					label="Screen Name"
 					description="The Twitter account whose tweets you would like to display." />
+
+				<field
+					name="follow_us_link_text"
+					default="Follow us on Twitter"
+					label="Follow us text"
+					description="If you've chosen to display the follow us link, set what you want that link to say here." />
+			</fieldset>
+
+			<fieldset name="SHOW_OPTIONS">
+				<field
+					name="show_follow_us_link"
+					default="1"
+					label="Display follow us link"
+					description="Show or hide the follow us link."
+					type="list">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+
+				<field
+					name="show_user"
+					default="1"
+					label="Display the tweeter's name"
+					description="Show or hide the username of the user who posted each tweet."
+					type="list">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+
+				<field
+					name="show_postdate"
+					default="1"
+					label="Display the post date"
+					description="Show or hide the date each tweet was posted."
+					type="list">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
 			</fieldset>
 
 			<fieldset
