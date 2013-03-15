@@ -9,3 +9,5 @@ My biggest issue with the other twitter modules on the market is that they're tr
 * Simple setup
 * Easy to modify
 * Free
+* Display tweets by @username
+* Display tweets by #hashtag, or #multiple #hashtags
