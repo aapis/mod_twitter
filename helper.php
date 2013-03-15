@@ -57,10 +57,10 @@ abstract class modTwitterHelper{
 		$hashtags = array();
 
 		foreach(explode(',', $hashtags_raw) as $hashtag){
-			$hashtags[] = urlencode($hashtag);
+			$hashtags[] = (strpos(urlencode($hashtag), '#') ? '%23'.urlencode($hashtag) : urlencode($hashtag));
 		}
 
-		$url = sprintf('http://search.twitter.com/search.json?q=%s&rpp=%d', '%23'.implode($hashtags, '&%23'), $params->get('count'));
+		$url = sprintf('http://search.twitter.com/search.json?q=%s&rpp=%d', implode($hashtags, '&%23'), $params->get('count'));
 		$rawdata = file_get_contents($url);
 		$data = array();
 

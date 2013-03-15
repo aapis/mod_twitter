@@ -20,7 +20,13 @@
 		<filename>index.html</filename>
 		<filename>mod_twitter.xml</filename>
 	</files>
+
+	<languages>
+		<language tag="en-GB">language/en-GB.mod_twitter.ini</language>
+	</languages>
+
 	<help key="Module: Twitter" />
+	
 	<config>
 		<fields name="params">
 			<fieldset name="basic">
@@ -65,7 +71,7 @@
 					description="The hashtags you want to use to build the list of tweets, comma separated." />
 			</fieldset>
 
-			<fieldset name="SHOW_OPTIONS">
+			<fieldset name="SHOW_OPTIONS_LABEL">
 				<field
 					name="show_follow_us_link"
 					default="1"
