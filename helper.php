@@ -16,8 +16,8 @@ abstract class modTwitterHelper{
 	 * @return object
 	 */
 	public static function getList($params){
-		switch($params->get('type')){
-			case 'hashtag':
+		switch($params->get('display_type')){
+			case 'hashtags':
 				return modTwitterHelper::byHashTag($params);
 			break;
 
@@ -46,13 +46,21 @@ abstract class modTwitterHelper{
 
 		return (is_string($data) ? json_decode($data) : $data);
 	}
+
 	/**
 	 * [byHashTag Pull data from Twitter by a hash tag]
 	 * @param  object $params The module parameters object
 	 * @return object
 	 */
 	public static function byHashTag($params){
-		$url = sprintf('https://http://search.twitter.com/search.json?q=%s&rpp=%d', $hashtags, $params->get('count'));
+		$hashtags_raw = $params->get('hashtags');
+		$hashtags = array();
+
+		foreach(explode(',', $hashtags_raw) as $hashtag){
+			$hashtags[] = urlencode($hashtag);
+		}
+
+		$url = sprintf('http://search.twitter.com/search.json?q=%s&rpp=%d', '%23'.implode($hashtags, '&%23'), $params->get('count'));
 		$rawdata = file_get_contents($url);
 		$data = array();
 
@@ -60,7 +68,7 @@ abstract class modTwitterHelper{
 			$data = $rawdata;
 		}else {
 			$data[0] = new stdClass;
-			$data[0]->Message = sprintf('There are no recent tweets for the user <strong>%s</strong> or there was an error contacting the server.', $params->get('screen_name'));
+			$data[0]->Message = sprintf('There are no tweets for the hashtag(s) %s', str_replace('&', ' ', urldecode('%23'.implode($hashtags, '&%23'))));
 			$data[0]->Status = 'Error';
 		}
 

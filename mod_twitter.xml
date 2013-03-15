@@ -47,6 +47,22 @@
 					default="Follow us on Twitter"
 					label="Follow us text"
 					description="If you've chosen to display the follow us link, set what you want that link to say here." />
+
+				<field
+					name="display_type"
+					default="username"
+					label="Tweet source"
+					description="Username will load all the user's latest tweets.  Hashtags will use the list of hashtags you provide to build the list of tweets."
+					type="list">
+					<option value="username">Username</option>
+					<option value="hashtags">Hashtags</option>
+				</field>
+
+				<field
+					name="hashtags"
+					type="textarea"
+					label="Hashtags"
+					description="The hashtags you want to use to build the list of tweets, comma separated." />
 			</fieldset>
 
 			<fieldset name="SHOW_OPTIONS">

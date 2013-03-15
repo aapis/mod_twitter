@@ -12,4 +12,10 @@ require_once dirname(__FILE__).'/helper.php';
 
 $list = modTwitterHelper::getList($params);
 
-require JModuleHelper::getLayoutPath('mod_twitter', $params->get('layout', 'default'));
+$view = $params->get('display_type', 'default');
+
+if(strpos($view, 'default') === FALSE){
+	$view = 'default_'. $view;	
+}
+
+require JModuleHelper::getLayoutPath('mod_twitter', $view);
