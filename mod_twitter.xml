@@ -45,7 +45,7 @@
 					name="screen_name"
 					type="text"
 					default="twitter"
-					label="Screen Name"
+					label="Username"
 					description="The Twitter account whose tweets you would like to display." />
 
 				<field
@@ -71,7 +71,7 @@
 					description="The hashtags you want to use to build the list of tweets, comma separated." />
 			</fieldset>
 
-			<fieldset name="SHOW_OPTIONS_LABEL">
+			<fieldset name="MOD_TWITTER_SHOW_OPTIONS_LABEL">
 				<field
 					name="show_follow_us_link"
 					default="1"
@@ -100,6 +100,26 @@
 					type="list">
 					<option value="1">JSHOW</option>
 					<option value="0">JHIDE</option>
+				</field>
+
+				<field
+					name="show_avatar"
+					default="1"
+					label="Display the tweeter's avatar"
+					description="Show or hide the avatar associated with each tweet."
+					type="list">
+					<option value="1">JSHOW</option>
+					<option value="0">JHIDE</option>
+				</field>
+
+				<field
+					name="style"
+					default="feed"
+					label="Display style"
+					description="The method used to display tweets."
+					type="list">
+					<option value="feed">Feed</option>
+					<option value="accordian">Accordian</option>
 				</field>
 			</fieldset>
 
