@@ -21,6 +21,7 @@ abstract class modTwitterHelper{
 				return modTwitterHelper::byHashTag($params);
 			break;
 
+			case 'username':
 			default: 
 				return modTwitterHelper::byUsername($params);
 		}
@@ -33,7 +34,7 @@ abstract class modTwitterHelper{
 	 */
 	public static function byUsername($params){
 		$url = sprintf('https://api.twitter.com/1/statuses/user_timeline.json?screen_name=%s&count=%d', $params->get('screen_name'), $params->get('count'));
-		$rawdata = file_get_contents($url);
+		$rawdata = @file_get_contents($url); //@'d because sometimes you can't hit the URL
 		$data = array();
 
 		if(false === empty($rawdata) && false !== $rawdata){
@@ -61,7 +62,7 @@ abstract class modTwitterHelper{
 		}
 
 		$url = sprintf('http://search.twitter.com/search.json?q=%s&rpp=%d', implode($hashtags, '&%23'), $params->get('count'));
-		$rawdata = file_get_contents($url);
+		$rawdata = @file_get_contents($url); //@'d because sometimes you can't hit the URL
 		$data = array();
 
 		if(false === empty($rawdata) && false !== $rawdata){

@@ -40,65 +40,61 @@ $style = $params->get('style', 'feed');
 			<h2 class="title"><?php echo $module->title; ?></h2>
 		</div>
 	<?php endif; ?>
-	<ul class="twitter-<?php echo $params->get('style', 'feed'); ?>">
-		<?php if(count($list) > 0): ?>
-			<?php foreach ($list->results as $item) : ?>
-				<?php if(isset($item->Status) && $item->Status == 'Error'): ?>
-					<li>
-						<?php echo $item->Message; ?>
-					</li>
-				<?php else : ?>
-				<?php
-					$item->text = preg_replace('/(http\:\/\/[a-zA-Z0-9\.\/]+[a-zA-Z0-9\/])/', '<a href="$1" target="_blank">$1</a>', $item->text);
-					$item->text = preg_replace('/\#([a-zA-Z0-9_-]+)/', '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>', $item->text);
-					$item->text = preg_replace('/\@([a-zA-Z0-9_-]+)/', '<a href="https://twitter.com/$1" target="_blank">@$1</a>', $item->text);
-				?>
-					<li>
-						<?php if($style == 'accordian'): ?>
-							<div class="accordian_title">
-								<?php if($params->get('show_user')): ?>
-									<?php if($params->get('show_avatar')): ?>
-										<a href="http://twitter.com/<?php echo $item->from_user; ?>" target="_blank">
-											<img src="<?php echo $item->profile_image_url_https; ?>" alt="<?php echo $item->from_user; ?>'s avatar" />
-											@<?php echo $item->from_user; ?>
-										</a>
-									<?php else : ?>
-										<a href="http://twitter.com/<?php echo $item->from_user; ?>" target="_blank">@<?php echo $item->from_user; ?></a>
-									<?php endif; ?>
-								<?php else: ?>
-									Tweeted on <?php echo date($params->get('postdate_format', 'F jS, Y'), strtotime($item->created_at)); ?>
-								<?php endif; ?>
-							</div>
-
-							<div class="accordian_content">
-								<p class="leadin"><?php echo $item->text; ?></p>
-							</div>
-						<?php elseif($style == 'feed'): ?>
+	<ul class="twitter-<?php echo $style; ?>">
+		<?php foreach ($list->results as $item): ?>
+			<?php if(isset($item->Status) && $item->Status == 'Error'): ?>
+				<li>
+					<?php echo $item->Message; ?>
+				</li>
+			<?php else: ?>
+			<?php
+				$item->text = preg_replace('/(http\:\/\/[a-zA-Z0-9\.\/]+[a-zA-Z0-9\/])/', '<a href="$1" target="_blank">$1</a>', $item->text);
+				$item->text = preg_replace('/\#([a-zA-Z0-9_-]+)/', '<a href="https://twitter.com/search?q=%23$1" target="_blank">#$1</a>', $item->text);
+				$item->text = preg_replace('/\@([a-zA-Z0-9_-]+)/', '<a href="https://twitter.com/$1" target="_blank">@$1</a>', $item->text);
+			?>
+				<li>
+					<?php if($style == 'accordian'): ?>
+						<div class="accordian_title">
 							<?php if($params->get('show_user')): ?>
-								<p class="user">
-									<?php if($params->get('show_avatar')): ?>
-										<a href="http://twitter.com/<?php echo $item->from_user; ?>" target="_blank">
-											<img src="<?php echo $item->profile_image_url_https; ?>" alt="<?php echo $item->from_user_name; ?>'s avatar" />
-											@<?php echo $item->from_user; ?>
-										</a>
-									<?php else : ?>
-										<a href="http://twitter.com/<?php echo $item->from_user; ?>" target="_blank">@<?php echo $item->from_user; ?></a>
-									<?php endif; ?>
-								</p>
+								<?php if($params->get('show_avatar')): ?>
+									<a href="http://twitter.com/<?php echo $item->from_user; ?>" target="_blank">
+										<img src="<?php echo $item->profile_image_url_https; ?>" alt="<?php echo $item->from_user; ?>'s avatar" />
+										@<?php echo $item->from_user; ?>
+									</a>
+								<?php else : ?>
+									<a href="http://twitter.com/<?php echo $item->from_user; ?>" target="_blank">@<?php echo $item->from_user; ?></a>
+								<?php endif; ?>
+							<?php else: ?>
+								Tweeted on <?php echo date($params->get('postdate_format', 'F jS, Y'), strtotime($item->created_at)); ?>
 							<?php endif; ?>
-							
-							<p class="leadin"><?php echo $item->text; ?></p>
+						</div>
 
-							<?php if($params->get('show_postdate', '1')): ?>
-								<span class="postdate"><em><?php echo date($params->get('postdate_format', 'F jS, Y'), strtotime($item->created_at)); ?></em></span>
-							<?php endif; ?>
+						<div class="accordian_content">
+							<p class="leadin"><?php echo $item->text; ?></p>
+						</div>
+					<?php elseif($style == 'feed'): ?>
+						<?php if($params->get('show_user')): ?>
+							<p class="user">
+								<?php if($params->get('show_avatar')): ?>
+									<a href="http://twitter.com/<?php echo $item->from_user; ?>" target="_blank">
+										<img src="<?php echo $item->profile_image_url_https; ?>" alt="<?php echo $item->from_user_name; ?>'s avatar" />
+										@<?php echo $item->from_user; ?>
+									</a>
+								<?php else : ?>
+									<a href="http://twitter.com/<?php echo $item->from_user; ?>" target="_blank">@<?php echo $item->from_user; ?></a>
+								<?php endif; ?>
+							</p>
 						<?php endif; ?>
-					</li>
-				<?php endif; ?>
-			<?php endforeach; ?>
-		<?php else : ?>
-			<p>There are no recent tweets.</p>
-		<?php endif; ?>
+						
+						<p class="leadin"><?php echo $item->text; ?></p>
+
+						<?php if($params->get('show_postdate', '1')): ?>
+							<span class="postdate"><em><?php echo date($params->get('postdate_format', 'F jS, Y'), strtotime($item->created_at)); ?></em></span>
+						<?php endif; ?>
+					<?php endif; ?>
+				</li>
+			<?php endif; ?>
+		<?php endforeach; ?>
 	</ul>
 	<?php if($params->get('show_follow_us_link')): ?>
 		<p><a href="https://twitter.com/<?php echo $params->get('screen_name'); ?>" class="follow_us" target="_blank"><?php echo $params->get('follow_us_link_text'); ?></p></a>

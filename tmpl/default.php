@@ -95,7 +95,7 @@ $style = $params->get('style', 'feed');
 				<?php endif; ?>
 			<?php endforeach; ?>
 		<?php else : ?>
-			<p>There are no recent tweets.</p>
+			<li>There are no recent tweets.</li>
 		<?php endif; ?>
 	</ul>
 	<?php if($params->get('show_follow_us_link')): ?>
