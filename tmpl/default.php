@@ -81,7 +81,7 @@ $style = $params->get('style', 'feed');
 										@<?php echo $item->user->screen_name; ?>
 									</a>
 								<?php else : ?>
-									<a href="http://twitter.com/<?php echo $item->from_user; ?>" target="_blank">@<?php echo $item->from_user; ?></a>
+									<a href="http://twitter.com/<?php echo $item->user->screen_name; ?>" target="_blank">@<?php echo $item->user->screen_name; ?></a>
 								<?php endif; ?>
 							<?php endif; ?>
 
