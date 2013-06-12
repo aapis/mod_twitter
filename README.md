@@ -1,3 +1,7 @@
+# Sorry, Twitter broke this module!
+
+This plugin uses two Twitter API v1.0 actions to get data.  Twitter has now deprecated the 1.0 version of the API so this plugin WILL NOT WORK.  I'm not deleting it for historical purposes, it is still an example of how to build a Joomla module even if it doesn't work.
+
 # mod_twitter
 
 Just a simple Twitter widget for use with the Joomla CMS.  Written for version 2.5, not tested with 3.0 yet.
